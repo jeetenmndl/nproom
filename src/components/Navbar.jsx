@@ -14,7 +14,7 @@ const Navbar = () => {
     <>
     {/* <!-- Top nav bar for secondary links --> */}
     <nav
-      className="w-full px-16 text-xs text-333 flex border-b border-gray-light justify-end"
+      className="w-full px-20 text-xs text-333 flex border-b border-gray-light justify-end"
     >
       <div className="tier1 flex leading-10">
         <Link href="#" className="mx-8 text-center tracking-widest cursor-pointer">ABOUT</Link>
@@ -31,7 +31,7 @@ const Navbar = () => {
 
 
     {/* <!-- Second Nav bar for logo and primary Links --> */}
-    <header className="w-full px-16 text-sm text-333 font-semibold shadow-sm flex items-center justify-between border-b border-gray-light">
+    <header className="w-full px-20 text-sm text-333 font-semibold shadow-sm flex items-center justify-between border-b border-gray-light">
       <div className="flex">
       {/* <!-- logo --> */}
         <div className="logo flex items-center gap-4 mr-9 cursor-pointer">
