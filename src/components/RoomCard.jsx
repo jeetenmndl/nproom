@@ -7,8 +7,8 @@ import {ChevronRight} from 'lucide-react'
 
 const RoomCard = () => {
   return (
-    <div className='cursor-pointer'>
-      
+    <div className='cursor-pointer border-b-2 border-transparent hover:border-main duration-500'>
+
         <div className=" relative imageBox max-w-80 h-72 rounded-lg overflow-hidden">
             <Image className='rounded-lg' layout='fill' objectFit='cover' src={Img1} alt='room in Biratnagar'/>
         </div>
