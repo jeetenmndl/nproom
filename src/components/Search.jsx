@@ -23,7 +23,7 @@ const Search = () => {
             <Input type="text" placeholder="Enter City Name" />
 
             <Select>
-                <SelectTrigger className="w-[180px]">
+                <SelectTrigger className=" w-48">
                     <SelectValue placeholder="Type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -37,7 +37,7 @@ const Search = () => {
             </Select>
 
             <Select>
-        <SelectTrigger className="w-[180px]">
+        <SelectTrigger className="w-48">
             <SelectValue placeholder="Rent" />
         </SelectTrigger>
         <SelectContent>
@@ -57,11 +57,11 @@ const Search = () => {
             </Select>
 
 
-            <Button>Search</Button>
+            <Button className="bg-main hover:bg-black ">Search</Button>
 
         </div>
     </article>
-    <div className=" w-full flex h-80 items-end overflow-hidden opacity-100 absolute top-0 -z-10">
+    <div className=" w-full flex h-80 items-end overflow-hidden absolute top-0 -z-10 brightness-50">
       <Image src={Banner2} alt="banner" className="w-1/2 h-auto"/>
       <Image src={Banner2} alt="banner" className="w-1/2 h-auto"/>
 

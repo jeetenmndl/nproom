@@ -17,14 +17,14 @@ const Navbar = () => {
       className="w-full px-20 text-xs text-333 flex border-b border-gray-light justify-end"
     >
       <div className="tier1 flex leading-10">
-        <Link href="#" className="mx-8 text-center tracking-widest cursor-pointer">ABOUT</Link>
-        <Link href="#" className="mx-8 tracking-widest cursor-pointer">SERVICES</Link>
-        <Link href="#" className="mx-8 tracking-widest cursor-pointer">FAQ&apos;S</Link>
-        <Link href="#" className="mx-8 tracking-widest cursor-pointer">CONTACT</Link>
+        <Link href="#" className="mx-8 text-center tracking-widest cursor-pointer hover:underline">ABOUT</Link>
+        <Link href="#" className="mx-8 tracking-widest cursor-pointer hover:underline">SERVICES</Link>
+        <Link href="#" className="mx-8 tracking-widest cursor-pointer hover:underline">FAQ&apos;S</Link>
+        <Link href="#" className="mx-8 tracking-widest cursor-pointer hover:underline">CONTACT</Link>
       </div>
       <div className="tier2 leading-10">
-        <div className="mx-8 tracking-widest">
-          <Link href="#" className="font-bold cursor-pointer">ADMIN</Link>
+        <div className="ml-8 tracking-widest">
+          <Link href="#" className="font-bold cursor-pointer hover:underline">ADMIN</Link>
         </div>
       </div>
     </nav>
@@ -45,8 +45,10 @@ const Navbar = () => {
         <div className="tier1 flex leading-[80px]">
           <HoverCard>
             <HoverCardTrigger className="mx-8 tracking-widest cursor-pointer hover:underline">CATEGORY</HoverCardTrigger>
-            <HoverCardContent className="leading-normal font-normal">
-                The React Framework – created and maintained by @vercel.
+            <HoverCardContent className="leading-normal font-normal flex flex-col w-40 gap-2">
+                <Link href='#' className='hover:underline'>Find Rooms</Link>
+                <Link href='#' className='hover:underline'>Find Flat</Link>
+                <Link href='#' className='hover:underline'>Find House</Link>
             </HoverCardContent>
           </HoverCard>
 
