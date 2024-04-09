@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import RoomCard from "@/components/RoomCard";
 import Image from "next/image";
 import Search from "@/components/Search";
+import BuySell from "@/components/BuySell";
 
 
 
@@ -30,6 +31,9 @@ export default function Home() {
         <Button className="bg-main">Show More</Button>
       </div>
     </section>
+
+    {/* buy sell  */}
+    <BuySell />
 
     </main>
   );
