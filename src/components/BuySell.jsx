@@ -15,7 +15,7 @@ const BuySell = () => {
             <div className="grid place-content-center w-2/5 overflow-hidden bg-brick">
                 <Image src={Banner1} alt="buy" className=" h-52 w-max" />
             </div>
-            <div className="w-3/5 py-8 px-6 flex flex-col justify-between">
+            <div className="w-3/5 py-8 px-6 flex flex-col justify-between border-b-2 border-transparent hover:border-main duration-500">
                 <h3 className="text-2xl font-semibold">Rent your room, flat, home</h3>
                 <p className="text-sm  italic text-gray-700">Upload details about your rooms and we will do the finding job.</p>
                 <div className="flex items-center gap-4">
@@ -29,7 +29,7 @@ const BuySell = () => {
             <div className="grid place-content-center w-2/5 overflow-hidden bg-brick">
                 <Image src={Banner2} alt="buy" className=" h-52 w-max" />
             </div>
-            <div className="w-3/5 py-8 px-6 flex flex-col justify-between">
+            <div className="w-3/5 py-8 px-6 flex flex-col justify-between border-b-2 border-transparent hover:border-main duration-500">
                 <h3 className="text-2xl font-semibold">Find available rooms</h3>
                 <p className="text-sm italic text-gray-700">Choose and book rooms of your choice at required location.</p>
                 <div className="flex items-center gap-4">
