@@ -42,7 +42,7 @@ const Navbar = () => {
         </div>
 
         {/* <!-- links primary  --> */}
-        <div className="tier1 flex leading-[80px]">
+        <div className="tier1 flex leading-[80px] [&>a]:uppercase">
           <HoverCard>
             <HoverCardTrigger className="mx-8 tracking-widest cursor-pointer hover:underline">CATEGORY</HoverCardTrigger>
             <HoverCardContent className="leading-normal font-normal flex flex-col w-40 gap-2">
@@ -52,9 +52,9 @@ const Navbar = () => {
             </HoverCardContent>
           </HoverCard>
 
-          <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">AUCTIONS</Link>
-          <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">BUY NOW</Link>
-          <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">SELL</Link>
+          <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">Find Room</Link>
+          <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">Post room</Link>
+          <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">Guide</Link>
         </div>
       </div>
 

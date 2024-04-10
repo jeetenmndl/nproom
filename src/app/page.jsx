@@ -3,6 +3,7 @@ import RoomCard from "@/components/RoomCard";
 import Image from "next/image";
 import Search from "@/components/Search";
 import BuySell from "@/components/BuySell";
+import HeroHome from "@/components/HeroHome";
 
 
 
@@ -26,11 +27,13 @@ export default function Home() {
         })
       }
       </article>
-      <div className="flex flex-col items-center mt-16">
+      <div className="flex flex-col items-center my-12">
         <p className="font-semibold text-lg mb-4">Continue exploring more rooms and flats</p>
         <Button className="bg-main">Show More</Button>
       </div>
     </section>
+
+    <HeroHome />
 
     {/* buy sell  */}
     <BuySell />
