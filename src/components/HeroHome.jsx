@@ -25,7 +25,7 @@ const HeroHome = () => {
                 </ul>
 
                 <div className='flex items-center gap-4 mt-8 [&>div]:cursor-pointer'>
-                    <div className='bg-green-400 rounded-xl w-52 px-4 py-2 flex justify-between items-center'>
+                    <div className='bg-green-400 rounded-xl w-52 px-4 py-2 flex justify-between items-center [&>div>p]:hover:underline'>
                         <div>
                             <span className='text-md'>Whatsapp</span>
                             <p className='flex text-xs'>+977 9812345678</p>
@@ -34,7 +34,7 @@ const HeroHome = () => {
                         <ChevronRight />
                     </div>
 
-                    <div className='bg-gray-900 text-white rounded-xl w-52 px-4 py-2 flex justify-between items-center'>
+                    <div className='bg-gray-900 text-white rounded-xl w-52 px-4 py-2 flex justify-between items-center [&>div>p]:hover:underline'>
                         <div>
                             <span className='text-md'>Phone Call</span>
                             <p className='flex text-xs'>+977 9812345678</p>

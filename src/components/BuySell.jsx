@@ -11,7 +11,7 @@ const BuySell = () => {
     <section className="my-24 mx-20">
     <article className="grid grid-cols-2 gap-8">
 
-        <div className="flex rounded bg-light overflow-hidden shadow-sm">
+        <div className="flex rounded bg-gray-100 overflow-hidden shadow-sm border border-gray-200">
             <div className="grid place-content-center w-2/5 overflow-hidden bg-brick">
                 <Image src={Banner1} alt="buy" className=" h-52 w-max" />
             </div>
@@ -25,7 +25,7 @@ const BuySell = () => {
             </div>
         </div>
 
-        <div className="flex rounded bg-light overflow-hidden shadow-sm">
+        <div className="flex rounded bg-gray-100 overflow-hidden shadow-sm border border-gray-200">
             <div className="grid place-content-center w-2/5 overflow-hidden bg-brick">
                 <Image src={Banner2} alt="buy" className=" h-52 w-max" />
             </div>
