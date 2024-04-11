@@ -7,6 +7,7 @@ import {ChevronRight} from 'lucide-react'
 
 const RoomCard = () => {
   return (
+    <Link href="/room">
     <div className='cursor-pointer border-b-2 border-transparent hover:border-main duration-500'>
 
         <div className=" relative imageBox max-w-80 h-72 rounded-lg overflow-hidden">
@@ -32,6 +33,7 @@ const RoomCard = () => {
         </div>
 
     </div>
+    </Link>
   )
 }
 
