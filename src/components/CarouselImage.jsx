@@ -12,7 +12,6 @@ import {
 
 export default function CarouselImage() {
   return (
-    <div className="w-3/5">
     <Carousel className="w-full bg-light">
       <CarouselContent>
         {Array.from({ length: 5 }).map((_, index) => (
@@ -30,7 +29,6 @@ export default function CarouselImage() {
       <CarouselPrevious className=" translate-x-20" />
       <CarouselNext className="-translate-x-20" />
     </Carousel>
-    </div>
   )
 }
 

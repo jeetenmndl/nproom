@@ -49,6 +49,7 @@ const Navbar = () => {
                 <Link href='#' className='hover:underline'>Find Rooms</Link>
                 <Link href='#' className='hover:underline'>Find Flat</Link>
                 <Link href='#' className='hover:underline'>Find House</Link>
+                <Link href='#' className='hover:underline'>Find Office</Link>
             </HoverCardContent>
           </HoverCard>
 

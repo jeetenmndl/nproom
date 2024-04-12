@@ -23,11 +23,10 @@ const RoomCard = () => {
             <div className="flex justify-between items-end">
               <p className='text-gray-800 font-medium mt-2'>Rs 12000 <span className='font-light'>/month</span></p>
 
-              <Link href="#" className='mr-2'>
                 <Button variant="outline" size="icon"  className=" size-8 hover:bg-main hover:text-white" >
                   <ChevronRight size={20} />
                 </Button>
-              </Link>
+                
             </div>
 
         </div>

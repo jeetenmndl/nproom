@@ -1,8 +1,44 @@
 import React from 'react'
+import Logo from '@/../public/logo.png'
+import Image from 'next/image'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card'
+import { Button } from './ui/button'
 
 const BookingCard = () => {
   return (
-    <div className=' border border-gray-100 rounded-lg w-2/5'>BookingCard</div>
+    <div className='rounded-lg sticky top-8 flex justify-end'>
+      <Card className="w-full">
+        <CardHeader>
+          <CardTitle>Peepal Chowk, Biratnagar</CardTitle>
+          <CardDescription>Near Arniko Campus</CardDescription>
+        </CardHeader>
+        <CardContent>
+          
+          <div className='flex flex-col py-4'>
+          <p className='text-md text-xl  font-semibold'>Rs 15000 <span className='font-normal'>/month</span></p>
+          <span className='font-light text-gray-500'>Negotiable</span>
+          </div>
+
+          <table className='mt-4 w-full'>
+            <tbody>
+            <tr><td>Stay Type</td><td className=' text-right'>Flat</td></tr>
+            <tr><td>Bedroom</td><td className=' text-right'>2</td></tr>
+            <tr><td>Kitchen</td><td className=' text-right'>1</td></tr>
+            <tr><td>Toilet/Bathroom</td><td className=' text-right'>Seperate</td></tr>
+            </tbody>
+          </table>
+        </CardContent>
+        <CardFooter>
+          <div className='flex flex-col w-full'>
+            <Button className="w-full bg-main">Book Now</Button>
+            <p className='text-xs mt-2 text-gray-500'>Small one-time commission amount will be charged</p>
+          </div>
+        </CardFooter>
+
+      </Card>
+    </div>
+
+
   )
 }
 
