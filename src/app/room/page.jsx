@@ -4,7 +4,7 @@ import BookingCard from '@/components/BookingCard'
 
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
-import {Check} from "lucide-react"
+import {Bath, Bed, Check, CookingPot, Droplet, Plug, RockingChair, Ruler, School, Sofa, SquareParking, Wifi, Wind} from "lucide-react"
 import {X} from "lucide-react"
 
 const page = () => {
@@ -37,12 +37,30 @@ const page = () => {
 
             <table className='w-full'>
               <tbody className=' [&>tr>td]:py-1 hover:[&>tr]:bg-slate-200'>
-              <tr><td>Stay Type</td><td className=' text-right'>Flat</td></tr>
-              <tr><td>Bedroom</td><td className=' text-right'>2</td></tr>
-              <tr><td>Hall</td><td className=' text-right'>1</td></tr>
-              <tr><td>Kitchen</td><td className=' text-right'>1</td></tr>
-              <tr><td>Bathroom</td><td className=' text-right'>Personal</td></tr>
-              <tr><td>Room Size</td><td className=' text-right'>Medium</td></tr>
+              <tr>
+                <td className='flex gap-4 items-center'><School className='text-gray-600' size={18} strokeWidth={1.5} /> Stay Type</td>
+                <td className=' text-right'>Flat</td>
+              </tr>
+              <tr>
+                <td className='flex gap-4 items-center'><Bed className='text-gray-600' size={16} strokeWidth={1.5} /> Bedroom</td>
+                <td className=' text-right'>2</td>
+              </tr>
+              <tr>
+                <td className='flex gap-4 items-center'><Sofa  className='text-gray-600'size={16} strokeWidth={1.5} /> Hall</td>
+                <td className=' text-right'>1</td>
+              </tr>
+              <tr>
+                <td className='flex gap-4 items-center'><CookingPot className='text-gray-600' size={16} strokeWidth={1.5} /> Kitchen</td>
+                <td className=' text-right'>1</td>
+              </tr>
+              <tr>
+                <td className='flex gap-4 items-center'><Bath className='text-gray-600' size={16} strokeWidth={1.5} /> Bathroom</td>
+                <td className=' text-right'>Personal</td>
+              </tr>
+              <tr>
+                <td className='flex gap-4 items-center'><Ruler className='text-gray-600' size={16} strokeWidth={1.5} /> Room Size</td>
+                <td className=' text-right'>Medium</td>
+              </tr>
               </tbody>
             </table>
           </CardContent>
@@ -61,27 +79,27 @@ const page = () => {
                 <table className='w-full'>
                   <tbody className=' [&>tr>td]:py-1 hover:[&>tr]:bg-slate-200'>
                   <tr>
-                    <td>Wi-Fi</td>
+                    <td className='flex gap-4 items-center'><Wifi size={16} strokeWidth={1.5} /> Wi-Fi</td>
                     <td className=' text-right'><Check size={20} strokeWidth={3} className='text-green-500' /></td>
                   </tr>
                   <tr>
-                    <td>Parking Area</td>
+                    <td className='flex gap-4 items-center'><SquareParking size={16} strokeWidth={1.5} /> Parking Area</td>
                     <td className=' text-right'><X size={20} strokeWidth={3} className='text-red-500' /></td>
                   </tr>
                   <tr>
-                    <td>Electricity</td>
+                    <td className='flex gap-4 items-center'><Plug size={16} strokeWidth={1.5} /> Electricity</td>
                     <td className=' text-right'><Check size={20} strokeWidth={3} className='text-green-500' /></td>
                   </tr>
                   <tr>
-                    <td>Water Supply</td>
+                    <td className='flex gap-4 items-center'><Droplet size={16} strokeWidth={1.5} /> Water Supply</td>
                     <td className=' text-right'><Check size={20} strokeWidth={3} className='text-green-500' /></td>
                   </tr>
                   <tr>
-                    <td>Furnished</td>
+                    <td className='flex gap-4 items-center'><RockingChair size={16} strokeWidth={1.5} />Furnished</td>
                     <td className=' text-right'><X size={20} strokeWidth={3} className='text-red-500' /></td>
                   </tr>
                   <tr>
-                    <td>Terrace</td>
+                    <td className='flex gap-4 items-center'><Wind size={16} strokeWidth={1.5} /> Terrace</td>
                     <td className=' text-right'><Check size={20} strokeWidth={3} className='text-green-500' /></td>
                   </tr>
                   </tbody>
