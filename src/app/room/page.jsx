@@ -17,14 +17,16 @@ const page = () => {
 
         <CarouselImage />
 
-        <div className='mt-12 mb-4'>
+        {/* description  */}
+        <section className='mt-12 mb-4'>
           <h1 className='text-3xl font-semibold mb-2'>Flat for rent at Peepal Chowk, Biratnagar</h1>
           <p>Property Owner: <span className='font-medium'>Jeeten Mandal</span></p>
         <hr className='my-4' />
         <p className='leading-8'>Welcome to your new home! This charming flat offers comfortable living with its two cozy bedrooms, perfect for a small family or roommates. The bright and airy hall provides a welcoming space for relaxation and entertainment. Cook up delicious meals in the fully equipped kitchen, complete with modern appliances. All rooms come fully furnished, ensuring convenience from day one. Located in a peaceful neighborhood, youll enjoy tranquility while being close to amenities and transport links. Dont miss out on this wonderful opportunity to make this flat your own!</p>
-        </div>
+        </section>
 
-        <div className="my-16 grid grid-cols-2 gap-8">
+        {/* rooms info and features  */}
+        <section className="my-16 grid grid-cols-2 gap-8">
 
           <Card className="w-full">
 
@@ -109,7 +111,25 @@ const page = () => {
 
           </Card>
 
-        </div>
+        </section>
+
+        <hr />
+
+        <section className="my-16 ">
+          <h3 className='text-2xl font-semibold'>Things to Know</h3>
+          <article className='grid grid-cols-2  mt-4 mx-4'>
+            <ul className=' list-disc [&>li]:py-2'>
+              <li>Arrive before 10 PM</li>
+              <li>No loud music at night</li>
+              <li>No smoking & alcohol</li>
+              <li>Rent to be paid on time</li>
+            </ul>
+
+            <blockquote className="border-l-2 pl-6 italic">
+            No pets allowed, smoking strictly prohibited indoors, rent due by the first of each month, and guests limited to overnight stays with prior notice. Maintenance requests should be reported promptly. These guidelines ensure a harmonious living environment for all tenants.
+            </blockquote>
+          </article>          
+        </section>
 
       </div>
 
