@@ -30,7 +30,7 @@ const BookingCard = () => {
             <tr><td>Bedroom</td><td className=' text-right'>2</td></tr>
             <tr><td>Hall</td><td className=' text-right'>1</td></tr>
             <tr><td>Kitchen</td><td className=' text-right'>1</td></tr>
-            <tr><td>Toilet/Bathroom</td><td className=' text-right'>Seperate</td></tr>
+            <tr><td>Toilet/Bathroom</td><td className=' text-right'>Personal</td></tr>
             </tbody>
           </table>
 
