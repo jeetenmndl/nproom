@@ -115,6 +115,7 @@ const page = () => {
 
         <hr />
 
+        {/* things to know  */}
         <section className="my-16 ">
           <h3 className='text-2xl font-semibold'>Things to Know</h3>
           <article className='grid grid-cols-2  mt-4 mx-4'>
@@ -130,6 +131,11 @@ const page = () => {
             </blockquote>
           </article>          
         </section>
+
+        <hr />
+
+        {/* https://www.google.com/maps/place/26%C2%B026'45.6%22N+87%C2%B017'33.2%22E  */}
+<iframe src="https://www.google.com/maps/place/26%C2%B026'45.6%22N+87%C2%B017'33.2%22E" width="600" height="200" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" />
 
       </div>
 
