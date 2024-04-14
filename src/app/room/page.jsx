@@ -6,11 +6,14 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 import {Bath, Bed, Check, CookingPot, Droplet, Plug, RockingChair, Ruler, School, Sofa, SquareParking, Wifi, Wind} from "lucide-react"
 import {X} from "lucide-react"
+import RoomCard from '@/components/RoomCard'
+import { Button } from '@/components/ui/button'
 
 const page = () => {
   return (
+    <>
     
-    <main className='px-20 py-8 flex gap-16 justify-between'>
+    <main className='px-20 pt-8 flex gap-16 justify-between'>
 
       {/* left section */}
       <div className=' w-4/6'>
@@ -135,7 +138,7 @@ const page = () => {
         <hr />
 
         {/* https://www.google.com/maps/place/26%C2%B026'45.6%22N+87%C2%B017'33.2%22E  */}
-<iframe src="https://www.google.com/maps/place/26%C2%B026'45.6%22N+87%C2%B017'33.2%22E" width="600" height="200" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" />
+{/* <iframe src="https://www.google.com/maps/place/26%C2%B026'45.6%22N+87%C2%B017'33.2%22E" width="600" height="200" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade" /> */}
 
       </div>
 
@@ -146,6 +149,21 @@ const page = () => {
 
     </main>
 
+
+    <section className="mx-20 my-16 ">
+      <h2 className='text-3xl font-semibold mb-6'>Nearby Locations</h2>
+      <article className="grid grid-cols-4 gap-x-6 gap-y-8">
+      {
+        [1,2,3,4].map((item)=>{
+          return(
+            <RoomCard key={item} />
+          )
+        })
+      }
+      </article>
+    </section>
+
+    </>
   )
 }
 

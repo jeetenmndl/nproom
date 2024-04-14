@@ -5,12 +5,15 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from './ui/button'
 import {Check} from "lucide-react"
 import {X} from "lucide-react"
+import BookingDrawer from './BookingDrawer'
+import BookingDialog from './BookingDialog'
+// import BookingDrawer from './BookingDrawer'
 
 
 const BookingCard = () => {
   return (
     <div className='rounded-lg sticky top-8 flex justify-end'>
-      <Card className="w-full">
+      <Card className="w-full relative">
 
         <CardHeader>
           <CardTitle>Peepal Chowk, Biratnagar</CardTitle>
@@ -53,6 +56,8 @@ const BookingCard = () => {
             <p className='text-xs mt-2 text-gray-500'>Small one-time commission amount will be charged</p>
           </div>
         </CardFooter>
+
+        <BookingDialog />
 
       </Card>
     </div>
