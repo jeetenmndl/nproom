@@ -52,12 +52,14 @@ const BookingCard = () => {
         
         <CardFooter>
           <div className='flex flex-col w-full'>
-            <Button className="w-full bg-main">Book Now</Button>
+            {/* <Button className="w-full bg-main">Book Now</Button> */}
+
+            {/* opens the dialog for booking and user info  */}
+            <BookingDialog />
+
             <p className='text-xs mt-2 text-gray-500'>Small one-time commission amount will be charged</p>
           </div>
         </CardFooter>
-
-        <BookingDialog />
 
       </Card>
     </div>
