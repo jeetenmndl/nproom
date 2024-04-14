@@ -32,6 +32,7 @@ const Search = () => {
                     <SelectItem value="room">Rooms</SelectItem>
                     <SelectItem value="flat">Flat</SelectItem>
                     <SelectItem value="house">House</SelectItem>
+                    <SelectItem value="house">Office</SelectItem>
                     </SelectGroup>
                 </SelectContent>
             </Select>
