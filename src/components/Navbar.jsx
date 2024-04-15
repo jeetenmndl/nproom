@@ -54,7 +54,7 @@ const Navbar = () => {
           </HoverCard>
 
           <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">Find Room</Link>
-          <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">Post room</Link>
+          <Link href="/post-room" className="mx-8 tracking-widest cursor-pointer hover:underline">Post room</Link>
           <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">Guide</Link>
         </div>
       </div>
