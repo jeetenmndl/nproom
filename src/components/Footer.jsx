@@ -4,6 +4,8 @@ import Image from "next/image"
 import Link from "next/link"
 import Map from "@/../public/map.png"
 import Logo from "@/../public/logo.png"
+import BannerBlue from "@/../public/bannerBlue.png"
+
 
 
 const Footer = () => {
@@ -13,26 +15,29 @@ const Footer = () => {
         <hr className="border-gray-200 sm:mx-auto " />
 
         {/* logo and slogan */}
-        <div className='flex px-20 py-4 gap-8 items-center'>
-            <div className="logo flex items-center gap-4 mr-9 cursor-pointer">
-            <Link href="/">
-                <Image src={Logo} alt="nproom" className='w-12 h-12'/>
-            </Link>
-            <Link href="/" className='text-5xl font-semibold'>NPROOM</Link>
-            </div>
-            <div>
-                <p className='font-semibold text-2xl text-gray-800'>We find the rooms so you dont have to.</p>
-            </div>
+        <div className='flex px-20 py-4 gap-8 items-center justify-between'>
+            <p className='font-semibold text-2xl text-gray-800'>We find the rooms so you dont have to.</p>
+            <p className='font-semibold text-2xl text-gray-800'>No Commission.</p>
         </div>
 
         <hr className="border-gray-200 sm:mx-auto " />
 
         {/* middle links  */}
         <div className='px-20 py-8 flex justify-between gap-4'>
-            <div className="mapBox w-2/5">
+            {/* <div className="mapBox w-2/5">
                 <Image src={Map} alt="nproom location" />
+            </div> */}
+            <div className='relative w-1/2'>
+            <div className="logo flex items-center justify-center gap-4 mt-8 cursor-pointer">
+            <Link href="/">
+                <Image src={Logo} alt="nproom" className='w-12 h-12'/>
+            </Link>
+            <Link href="/" className='text-5xl font-semibold'>NPROOM</Link>
             </div>
-            <div className='flex justify-evenly w-3/5'>
+            <Image src={BannerBlue} alt='banner' className='absolute w-full bottom-0' />
+        </div>
+
+            <div className='flex justify-evenly w-1/2'>
                 <div className='flex flex-col gap-3 '>
                     <h4 className='font-semibold'>Services</h4>
                     <Link href="#" className='hover:underline'>Book Rooms/Flat</Link>

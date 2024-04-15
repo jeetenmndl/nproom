@@ -52,24 +52,13 @@ const BookingDialog = () => {
         </div>
         
         <div className="my-2">
-            <Label htmlFor="email">
-              Email
-            </Label>
-            <Input
-              id="email"
-              placeholder="abc@xyz.com"
-              className="mt-0.5 h-8 ring-stone-800 "
-            />
-        </div>
-        
-        <div className="my-2">
             <Label htmlFor="message">
               Message
             </Label>
             <Textarea
               id="message"
               placeholder="Your concerns, or message to the house owner..."
-              className="mt-0.5 ring-stone-800"
+              className="mt-0.5 ring-stone-800 placeholder:text-gray-400 placeholder:font-light"
             />
         </div>
         
@@ -81,9 +70,9 @@ const BookingDialog = () => {
               type='file'
               id="document"
               placeholder="Hari Prasad"
-              className="mt-0.5 ring-stone-800 "
+              className="mt-0.5 ring-stone-800"
             />
-            <span className='text-xs text-gray-500'>(Citizenship, driving liscense, voting card, etc)</span>
+            <span className='text-xs text-gray-500'>(Citizenship, Student ID, Driving liscense, Voting card, etc)</span>
         </div>
         
         <DialogFooter className="mt-4">
