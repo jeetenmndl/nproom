@@ -19,6 +19,8 @@ import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Switch } from './ui/switch'
+import { Textarea } from './ui/textarea'
+import { Checkbox } from './ui/checkbox'
  
 const formSchema = z.object({
   city: z.string().min(3, {
@@ -31,11 +33,46 @@ const formSchema = z.object({
     message : "At least 10 characters.",
   }),
   owner: z.string().min(3, {
-    message : "Ast least 3 characters.",
+    message : "At least 3 characters.",
   }),
   contact: z.string().min(10, {
     message : "Must be 10 numbers.",
   }).max(10,{message:"Must be 10 numbers"}),
+  wifi: z.boolean().optional(),
+  parking: z.boolean().optional(),
+  electricity: z.boolean().optional(),
+  water: z.boolean().optional(),
+  terrace: z.boolean().optional(),
+  furnished: z.boolean().optional(),
+  rent: z.string().min(1, {
+    message : "Cannot be empty.",
+  }),
+  rentType: z.string().min(1,{
+    message:  "Choose one",
+  }),
+  type: z.string().min(1, {
+    message : "Choose one",
+  }), 
+  bathroom: z.string().min(3, {
+    message : "Choose one",
+  }), 
+  roomSize: z.string().min(3, {
+    message : "Choose one",
+  }),
+  bedroom: z.string().min(1, {
+    message : "Cannot be empty.",
+  }),
+  kitchen: z.string().min(1, {
+    message : "Cannot be empty.",
+  }),
+  hall: z.string().min(1, {
+    message : "Cannot be empty.",
+  }),
+  rules: z.boolean().optional(),
+  disclosure: z.string().min(10, {
+    message : "Write some ...",
+  }),
+  
 })
 
 
@@ -67,6 +104,22 @@ const PostRoomPage = () => {
           neighbourhood:"",
           owner:"",
           contact:"",
+          wifi: false,
+          parking: false,
+          electricity: false,
+          water: false,
+          terrace: false,
+          furnished: false,
+          rent: "",
+          rentType: "",
+          type: "",
+          bathroom: "",
+          roomSize: "",
+          bedroom: "",
+          kitchen: "",
+          hall: "",
+          rules: false,
+          disclosure: "",
         },
       })
      
@@ -153,7 +206,7 @@ const PostRoomPage = () => {
         <form onSubmit={form.handleSubmit(onSubmit)}>
             
         {/* Step 1: location  */}
-        <article className={step==1?"space-y-4":"hidden"}> 
+        <article className={step==1||step==5?"space-y-4 mb-12":"hidden"}> 
 
             <div className='grid grid-cols-2 gap-4'>
             {/* city name */}
@@ -296,20 +349,163 @@ const PostRoomPage = () => {
             )}
             />
 
+           
+
+            </div>
+
+             {/* buttons back and next     */}
+            <div className='grid grid-cols-2 gap-6 pt-12'>
+                <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center " onClick={previousStep} >Back</div>
+                
+                <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center" onClick={nextStep} >Next</div>
             </div>
         </article>
 
         {/* step 2: rooms and facility  */}
-        <article className={step==2?"grid grid-cols-2 gap-4":"hidden"}>
+        <article className={step==2||step==5?"mb-12":"hidden"}>
+            <div className='grid grid-cols-2 gap-4 mb-6'>
+
+            {/* rooms  */}
             <Card>
                 <CardHeader>
                     <CardTitle>Rooms Information</CardTitle>
                 </CardHeader>
                 <CardContent>
+                        {/*  type */}
+                        <FormField
+                        control={form.control}
+                        name="type"
+                        render={({ field }) => (
+                            <FormItem className="flex justify-between items-center">
+                            <FormLabel>Stay Type</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                            <SelectTrigger className="h-8 w-40">
+                                <SelectValue placeholder="Choose One" className="placeholder:text-gray-400 font-light" />
+                            </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                            <SelectItem value="Room">Room</SelectItem>
+                            <SelectItem value="Flat">Flat</SelectItem>
+                            <SelectItem value="Home">Home</SelectItem>
+                            <SelectItem value="Office">Office</SelectItem>
+                            </SelectContent>
+                        </Select>
+                            {/* <FormDescription>
+                                This is your public display name.
+                            </FormDescription> */}
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
 
+                         {/* bedroom */}
+                        <FormField
+                        control={form.control}
+                        name="bedroom"
+                        render={({ field }) => (
+                            <FormItem className="flex justify-between items-center">
+                            <FormLabel>Bedroom</FormLabel>
+                            <FormControl>
+                            <Input className="placeholder:text-gray-400 h-8 w-12 font-semibold" type="number" placeholder="" {...field} />
+                            </FormControl>
+                            {/* <FormDescription>
+                                This is your public display name.
+                            </FormDescription> */}
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                         {/* kitchen */}
+                         <FormField
+                        control={form.control}
+                        name="kitchen"
+                        render={({ field }) => (
+                            <FormItem className="flex justify-between items-center">
+                            <FormLabel>Kitchen</FormLabel>
+                            <FormControl>
+                            <Input className="placeholder:text-gray-400 h-8 w-12 font-semibold" type="number" placeholder="" {...field} />
+                            </FormControl>
+                            {/* <FormDescription>
+                                This is your public display name.
+                            </FormDescription> */}
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                         {/* hall */}
+                         <FormField
+                        control={form.control}
+                        name="hall"
+                        render={({ field }) => (
+                            <FormItem className="flex justify-between items-center">
+                            <FormLabel>Hall</FormLabel>
+                            <FormControl>
+                            <Input className="placeholder:text-gray-400 h-8 w-12 font-semibold" type="number" placeholder="" {...field} />
+                            </FormControl>
+                            {/* <FormDescription>
+                                This is your public display name.
+                            </FormDescription> */}
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                         
+                         {/*  bathroom */}
+                         <FormField
+                        control={form.control}
+                        name="bathroom"
+                        render={({ field }) => (
+                            <FormItem className="flex justify-between items-center">
+                            <FormLabel>Bathroom</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                            <SelectTrigger className="h-8 w-40">
+                                <SelectValue placeholder="Choose One" className="placeholder:text-gray-400 font-light" />
+                            </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                            <SelectItem value="Personal">Personal</SelectItem>
+                            <SelectItem value="Shared">Shared</SelectItem>
+                            </SelectContent>
+                        </Select>
+                            {/* <FormDescription>
+                                This is your public display name.
+                            </FormDescription> */}
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
+                        {/*  size */}
+                        <FormField
+                        control={form.control}
+                        name="roomSize"
+                        render={({ field }) => (
+                            <FormItem className="flex justify-between items-center">
+                            <FormLabel>Room Size</FormLabel>
+                            <Select onValueChange={field.onChange} defaultValue={field.value}>
+                            <FormControl>
+                            <SelectTrigger className="h-8 w-40">
+                                <SelectValue placeholder="Choose One" className="placeholder:text-gray-400 font-light" />
+                            </SelectTrigger>
+                            </FormControl>
+                            <SelectContent>
+                            <SelectItem value="Small">Small</SelectItem>
+                            <SelectItem value="Medium">Medium</SelectItem>
+                            <SelectItem value="Large">Large</SelectItem>
+                            </SelectContent>
+                        </Select>
+                            {/* <FormDescription>
+                                This is your public display name.
+                            </FormDescription> */}
+                            <FormMessage />
+                            </FormItem>
+                        )}
+                        />
                 </CardContent>
             </Card>
 
+            {/* facilities  */}
             <Card>
                 <CardHeader>
                     <CardTitle>Facilities</CardTitle>
@@ -330,7 +526,6 @@ const PostRoomPage = () => {
                         <Switch
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="h-5"
                         />
                     </FormControl>
                     </FormItem>
@@ -351,7 +546,6 @@ const PostRoomPage = () => {
                         <Switch
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="h-5"
                         />
                     </FormControl>
                     </FormItem>
@@ -372,7 +566,6 @@ const PostRoomPage = () => {
                         <Switch
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="h-5"
                         />
                     </FormControl>
                     </FormItem>
@@ -393,7 +586,6 @@ const PostRoomPage = () => {
                         <Switch
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="h-5"
                         />
                     </FormControl>
                     </FormItem>
@@ -414,7 +606,6 @@ const PostRoomPage = () => {
                         <Switch
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="h-5"
                         />
                     </FormControl>
                     </FormItem>
@@ -435,7 +626,6 @@ const PostRoomPage = () => {
                         <Switch
                         checked={field.value}
                         onCheckedChange={field.onChange}
-                        className="h-5"
                         />
                     </FormControl>
                     </FormItem>
@@ -444,7 +634,115 @@ const PostRoomPage = () => {
 
                 </CardContent>
             </Card>
+            </div>
+
+            {/* description  */}
+            <FormField
+            control={form.control}
+            name="description"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                    <Textarea
+                    placeholder="Write about your rooms, environment, facilities and more."
+                    className="h-32"
+                    {...field}
+                    />
+                </FormControl>
+                <FormMessage />
+                </FormItem>
+            )}
+            />
+
+            
+              {/* buttons back and next     */}
+            <div className='grid grid-cols-2 gap-6 pt-12'>
+                <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center " onClick={previousStep} >Back</div>
+                
+                <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center" onClick={nextStep} >Next</div>
+            </div>
         
+        </article>
+
+        {/* step 3: rules  */}
+        <article className={step==3||step==5?"mb-12":"hidden"}>
+            <div className='grid grid-cols-2 gap-4'>
+            <Card>
+                <CardHeader>
+                    <CardTitle>Select Rules</CardTitle>
+                </CardHeader>
+                <CardContent>
+
+                    <FormField
+                    control={form.control}
+                    name="rules"
+                    render={({ field }) => (
+                    <FormItem className="flex flex-row items-center justify-between">
+                    <div>
+                        <FormLabel className="text-base">
+                        Click to apply rules
+                        </FormLabel>
+                    </div>
+                    <FormControl>
+                        <Switch
+                        checked={field.value}
+                        onCheckedChange={field.onChange}
+                        />
+                    </FormControl>
+                    </FormItem>
+                    )}
+                    />
+
+                    <ul className='space-y-2 list-disc ml-4 mt-4'>
+                        <li>Arrive before 10 PM</li>
+                        <li>No loud Music at night</li>
+                        <li>No smoking and alcohol</li>
+                        <li>Rent to be paid on time</li>
+                        <li>Pets not allowed</li>
+                        <li>Maintin Cleanliness</li>
+                    </ul>
+                
+                </CardContent>
+            </Card>
+
+            <Card>
+                <CardHeader>
+                    <CardTitle>
+                        More Rules
+                    </CardTitle>
+                </CardHeader>
+                <CardContent className="relative h-full">
+                     {/* disclosure  */}
+                    <FormField
+                    control={form.control}
+                    name="disclosure"
+                    render={({ field }) => (
+                        <FormItem>
+                        <FormControl>
+                            <Textarea
+                            placeholder="Write about your home rules and the behavior of tenant"
+                            className="h-60"
+                            {...field}
+                            />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                    />
+                </CardContent>
+            </Card>
+            
+            
+
+            </div>
+            
+              {/* buttons back and next     */}
+            <div className='grid grid-cols-2 gap-6 pt-12'>
+                <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center " onClick={previousStep} >Back</div>
+                
+                <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center" onClick={nextStep} >Next</div>
+            </div>
         </article>
 
             
@@ -452,12 +750,7 @@ const PostRoomPage = () => {
         </form>
         </Form>
 
-         {/* buttons back and next     */}
-        <div className='grid grid-cols-2 gap-6'>
-            <Button className="bg-gray-200 text-black border-1 border-gray-300 hover:text-white" onClick={previousStep} >Back</Button>
-            
-            <Button className="bg-main" onClick={nextStep} >Next</Button>
-         </div>
+        
     </section>
     </>
   )
