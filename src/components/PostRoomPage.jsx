@@ -681,7 +681,7 @@ const PostRoomPage = () => {
         {/* step 3: rooms and facility  */}
         <article className={step==3||step==5?"mb-12 space-y-4":"hidden"}>
 
-            <FormField
+            {/* <FormField
             control={form.control}
             name="mainPhoto"
             render={({ field }) => (
@@ -696,14 +696,14 @@ const PostRoomPage = () => {
                 <FormMessage />
                 </FormItem>
             )}
-            />
+            /> */}
 
             <FormField
             control={form.control}
             name="photos"
             render={({ field }) => (
                 <FormItem>
-                <FormLabel>Main Photo</FormLabel>
+                <FormLabel>Photos</FormLabel>
                 <FormControl>
                     <Input type="file" placeholder="Choose Photo" {...field} multiple/>
                 </FormControl>
