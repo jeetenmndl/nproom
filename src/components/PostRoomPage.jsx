@@ -22,6 +22,9 @@ import { Switch } from './ui/switch'
 import { Textarea } from './ui/textarea'
 import { Checkbox } from './ui/checkbox'
 import Image from 'next/image'
+import { UploadButton } from '@/lib/Uploadthing'
+
+
  
 const formSchema = z.object({
   city: z.string().min(3, {
@@ -698,7 +701,7 @@ const PostRoomPage = () => {
             )}
             /> */}
 
-            <FormField
+            {/* <FormField
             control={form.control}
             name="photos"
             render={({ field }) => (
@@ -713,7 +716,21 @@ const PostRoomPage = () => {
                 <FormMessage />
                 </FormItem>
             )}
-            />
+            /> */}
+
+
+        <UploadButton
+            endpoint="imageUploader"
+            onClientUploadComplete={(res) => {
+            // Do something with the response
+            console.log("Files: ", res);
+            alert("Upload Completed");
+            }}
+            onUploadError={(error) => {
+            // Do something with the error.
+            alert(`ERROR! ${error.message}`);
+            }}
+        />
 
               {/* buttons back and next     */}
              {step==5?"":
