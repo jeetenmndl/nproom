@@ -21,6 +21,7 @@ import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import { Switch } from './ui/switch'
 import { Textarea } from './ui/textarea'
 import { Checkbox } from './ui/checkbox'
+import Image from 'next/image'
  
 const formSchema = z.object({
   city: z.string().min(3, {
@@ -68,10 +69,15 @@ const formSchema = z.object({
   hall: z.string().min(1, {
     message : "Cannot be empty.",
   }),
+  description: z.string().min(10, {
+    message : "Write some ...",
+  }),
   rules: z.boolean().optional(),
   disclosure: z.string().min(10, {
     message : "Write some ...",
   }),
+  mainPhoto: z.string(),
+  photos: z.string(),
   
 })
 
@@ -82,14 +88,14 @@ const PostRoomPage = () => {
 
     const nextStep = ()=>{
         if (step<5){
-            console.log("step updated", step+1)
             setStep(step+1);
+            document.documentElement.scrollTop = 0; 
         }
     }
     const previousStep = ()=>{
         if (step>1){
-            console.log("step updated back", step-1)
             setStep(step-1);
+            document.documentElement.scrollTop = 0; 
         }
     }
 
@@ -118,10 +124,14 @@ const PostRoomPage = () => {
           bedroom: "",
           kitchen: "",
           hall: "",
+          description: "",
           rules: false,
           disclosure: "",
+          mainPhoto: "",
+          photos: "",
         },
       })
+
      
       // 2. Define a submit handler.
       function onSubmit(values) {
@@ -135,9 +145,8 @@ const PostRoomPage = () => {
     <>
     <section className=' relative '>
             <article className=' p-4 mt-8 sticky top-8 flex flex-col items-center'>
-            
-
-            <div className='flex gap-4 items-center mb-8 '>
+            <aside>                
+                <div className='flex gap-4 items-center mb-8 '>
                     <span className={step>1?"bg-green-400 p-2 rounded-full text-white":"bg-gray-200 p-2 rounded-full text-gray-400"}>
                         {
                             step>1
@@ -163,8 +172,8 @@ const PostRoomPage = () => {
                         }
                     </span>
                     <div className={step>=2?"text-black":"text-gray-400"} >
-                        <h3 className='font-semibold text-lg leading-5'>Location</h3>
-                        <p className='text-sm'>City, address and neighbourhood</p>
+                        <h3 className='font-semibold text-lg leading-5'>Rooms & Facilities</h3>
+                        <p className='text-sm'>Number of rooms and type of facilities</p>
                     </div>
                 </div>
                 <div className='flex gap-4 items-center mb-8 '>
@@ -178,8 +187,8 @@ const PostRoomPage = () => {
                         }
                     </span>
                     <div className={step>=3?"text-black":"text-gray-400"} >
-                        <h3 className='font-semibold text-lg leading-5'>Location</h3>
-                        <p className='text-sm'>City, address and neighbourhood</p>
+                        <h3 className='font-semibold text-lg leading-5'>Photos</h3>
+                        <p className='text-sm'>Photos of rooms and location</p>
                     </div>
                 </div>
                 <div className='flex gap-4 items-center mb-8 '>
@@ -193,11 +202,11 @@ const PostRoomPage = () => {
                         }
                     </span>
                     <div className={step>=4?"text-black":"text-gray-400"} >
-                        <h3 className='font-semibold text-lg leading-5'>Location</h3>
-                        <p className='text-sm'>City, address and neighbourhood</p>
+                        <h3 className='font-semibold text-lg leading-5'>Rules</h3>
+                        <p className='text-sm'>Standard rules and house rules</p>
                     </div>
                 </div>
-
+            </aside>
             </article>
     </section>
 
@@ -354,11 +363,13 @@ const PostRoomPage = () => {
             </div>
 
              {/* buttons back and next     */}
-            <div className='grid grid-cols-2 gap-6 pt-12'>
-                <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center " onClick={previousStep} >Back</div>
-                
-                <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center" onClick={nextStep} >Next</div>
-            </div>
+             {step==5?"":
+                <div className='grid grid-cols-2 gap-6 pt-12'>
+                    <div  className="bg-gray-200 text-gray-400 px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-not-allowed" onClick={previousStep} >Back</div>
+                    
+                    <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer" onClick={nextStep} >Next</div>
+                </div>
+             }
         </article>
 
         {/* step 2: rooms and facility  */}
@@ -657,16 +668,65 @@ const PostRoomPage = () => {
 
             
               {/* buttons back and next     */}
-            <div className='grid grid-cols-2 gap-6 pt-12'>
-                <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center " onClick={previousStep} >Back</div>
-                
-                <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center" onClick={nextStep} >Next</div>
-            </div>
+             {step==5?"":
+                <div className='grid grid-cols-2 gap-6 pt-12'>
+                    <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer " onClick={previousStep} >Back</div>
+                    
+                    <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer" onClick={nextStep} >Next</div>
+                </div>
+             }
         
         </article>
 
-        {/* step 3: rules  */}
-        <article className={step==3||step==5?"mb-12":"hidden"}>
+        {/* step 3: rooms and facility  */}
+        <article className={step==3||step==5?"mb-12 space-y-4":"hidden"}>
+
+            <FormField
+            control={form.control}
+            name="mainPhoto"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>More Photos</FormLabel>
+                <FormControl>
+                    <Input type="file"  accept="image/*" placeholder="Choose Photo" {...field} />
+                </FormControl>
+                <FormDescription>
+                    This photo will be displayed at first.
+                </FormDescription>
+                <FormMessage />
+                </FormItem>
+            )}
+            />
+
+            <FormField
+            control={form.control}
+            name="photos"
+            render={({ field }) => (
+                <FormItem>
+                <FormLabel>Main Photo</FormLabel>
+                <FormControl>
+                    <Input type="file" placeholder="Choose Photo" {...field} multiple/>
+                </FormControl>
+                <FormDescription>
+                    Upload 3 or 4 photos of rooms and surrounding
+                </FormDescription>
+                <FormMessage />
+                </FormItem>
+            )}
+            />
+
+              {/* buttons back and next     */}
+             {step==5?"":
+                <div className='grid grid-cols-2 gap-6 pt-12'>
+                    <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer " onClick={previousStep} >Back</div>
+                    
+                    <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer" onClick={nextStep} >Next</div>
+                </div>
+             }
+        </article>
+
+        {/* step 4: rules  */}
+        <article className={step==4||step==5?"mb-12":"hidden"}>
             <div className='grid grid-cols-2 gap-4'>
             <Card>
                 <CardHeader>
@@ -712,7 +772,7 @@ const PostRoomPage = () => {
                         More Rules
                     </CardTitle>
                 </CardHeader>
-                <CardContent className="relative h-full">
+                <CardContent>
                      {/* disclosure  */}
                     <FormField
                     control={form.control}
@@ -737,16 +797,14 @@ const PostRoomPage = () => {
 
             </div>
             
-              {/* buttons back and next     */}
+             {/* buttons back and next     */}
             <div className='grid grid-cols-2 gap-6 pt-12'>
-                <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center " onClick={previousStep} >Back</div>
+                <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer " onClick={previousStep} >Back</div>
                 
-                <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center" onClick={nextStep} >Next</div>
+                <Button type="submit" className="bg-main" onClick={nextStep} >Submit</Button>
             </div>
         </article>
 
-            
-            <Button type="submit">Submit</Button>
         </form>
         </Form>
 
