@@ -23,6 +23,8 @@ import { Textarea } from './ui/textarea'
 import { Checkbox } from './ui/checkbox'
 import Image from 'next/image'
 import { UploadButton } from '@/lib/Uploadthing'
+import ResponseImage from './ResponseImage'
+import { useToast } from "@/components/ui/use-toast"
 
 
  
@@ -79,15 +81,26 @@ const formSchema = z.object({
   disclosure: z.string().min(10, {
     message : "Write some ...",
   }),
-  mainPhoto: z.string(),
-  photos: z.string(),
   
 })
 
 
 const PostRoomPage = () => {
 
+    const {toast} = useToast();
+
     const [step, setStep] = useState(1);
+    const [responseImage, setResponseImage] = useState([]);
+
+    const updateImages = (newImage)=>{
+        console.log("responseImage:", responseImage)
+        let tempImage = responseImage;
+        tempImage.push(newImage);
+        setResponseImage(tempImage);
+        console.log(responseImage);
+        document.getElementById("uploadedNum").html = `Images Uploaded: ${responseImage.length}`
+    }
+
 
     const nextStep = ()=>{
         if (step<5){
@@ -130,8 +143,6 @@ const PostRoomPage = () => {
           description: "",
           rules: false,
           disclosure: "",
-          mainPhoto: "",
-          photos: "",
         },
       })
 
@@ -141,6 +152,7 @@ const PostRoomPage = () => {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         console.log(values)
+        console.log(responseImage)
       }
 
 
@@ -684,53 +696,41 @@ const PostRoomPage = () => {
         {/* step 3: rooms and facility  */}
         <article className={step==3||step==5?"mb-12 space-y-4":"hidden"}>
 
-            {/* <FormField
-            control={form.control}
-            name="mainPhoto"
-            render={({ field }) => (
-                <FormItem>
-                <FormLabel>More Photos</FormLabel>
-                <FormControl>
-                    <Input type="file"  accept="image/*" placeholder="Choose Photo" {...field} />
-                </FormControl>
-                <FormDescription>
-                    This photo will be displayed at first.
-                </FormDescription>
-                <FormMessage />
-                </FormItem>
-            )}
-            /> */}
-
-            {/* <FormField
-            control={form.control}
-            name="photos"
-            render={({ field }) => (
-                <FormItem>
-                <FormLabel>Photos</FormLabel>
-                <FormControl>
-                    <Input type="file" placeholder="Choose Photo" {...field} multiple/>
-                </FormControl>
-                <FormDescription>
-                    Upload 3 or 4 photos of rooms and surrounding
-                </FormDescription>
-                <FormMessage />
-                </FormItem>
-            )}
-            /> */}
-
+        <p className='text-center'>Upload images one by one.</p>
 
         <UploadButton
             endpoint="imageUploader"
             onClientUploadComplete={(res) => {
             // Do something with the response
             console.log("Files: ", res);
-            alert("Upload Completed");
+            // alert("Upload Completed");
+            updateImages(res[0].url);
+            toast({
+                title: "Uploaded !",
+                description: "This image was uploaded sucessfully.",
+              })
             }}
             onUploadError={(error) => {
             // Do something with the error.
             alert(`ERROR! ${error.message}`);
             }}
         />
+        
+    
+        
+        <div className=' grid grid-cols-3 gap-4'>               
+                {/* <ResponseImage responseImage={responseImage} /> */}
+                {
+                responseImage.map((imageURL)=>{
+                    return(
+                        <div className='h-[150px] w-[200px] overflow-hidden grid place-content-center bg-gray-200' key={imageURL}>
+                            <Image src={imageURL} alt="room in sale" height={150} width={200} />
+                        </div>
+                    )
+                })
+            }
+        </div>
+                <p id='uploadedNum'></p>
 
               {/* buttons back and next     */}
              {step==5?"":

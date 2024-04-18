@@ -5,6 +5,10 @@ const nextConfig = {images: {
         protocol: 'https',
         hostname: 'plus.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'utfs.io',
+      },
     ],
   },};
 
