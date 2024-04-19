@@ -25,6 +25,8 @@ import {
 import { UploadButton } from '@/lib/Uploadthing'
 import { useToast } from './ui/use-toast'
 import postUser from '@/lib/actions/postUser'
+import { Loader2 } from 'lucide-react'
+import { useRouter } from 'next/navigation'
   
 
 
@@ -44,8 +46,11 @@ const formSchema = z.object({
 
 const Register = () => {
 
+    const router = useRouter()
     const {toast}= useToast();
     const [document, setDocument] = useState(null);
+    const [loading, setLoading] = useState(false);
+    
 
     const form = useForm({
         resolver: zodResolver(formSchema),
@@ -59,9 +64,28 @@ const Register = () => {
 
     // 2. Define a submit handler.
     async function onSubmit(values) {
-        console.log(values,document)
-        const response = await postUser(values, document);
-        console.log(response);
+        try {
+            setLoading(true);
+            const response = await postUser(values, document);
+            console.log("in register page", response);
+            localStorage.setItem("auth-token", response.data)
+        } catch (error) {
+            console.log(error)
+            toast({
+                title: "Oops !",
+                description: "Some error occured.",
+                variant: "destructive",
+            })
+        }finally{
+            setLoading(false);
+            toast({
+                title: "Congratulations !",
+                description: "Account created sucessfully.",
+            })
+            setTimeout(() => {
+                router.back();
+            }, 3000);
+        }
     }
 
   return (
@@ -83,7 +107,7 @@ const Register = () => {
                 <FormItem>
                 <FormLabel>Full name</FormLabel>
                 <FormControl>
-                   <Input className="placeholder:text-gray-400 font-light" placeholder="Full name..." {...field} />
+                   <Input className="placeholder:text-gray-400 font-light" placeholder="Full name" {...field} />
                 </FormControl>
                 {/* <FormDescription>
                     This is your public display name.
@@ -119,7 +143,7 @@ const Register = () => {
                 <FormItem>
                 <FormLabel>Phone number</FormLabel>
                 <FormControl>
-                   <Input type="number" className="placeholder:text-gray-400 font-light" placeholder="Biratnagar..." {...field} />
+                   <Input type="number" className="placeholder:text-gray-400 font-light" placeholder="98XXXXXXXX" {...field} />
                 </FormControl>
                 {/* <FormDescription>
                     This is your public display name.
@@ -176,7 +200,15 @@ const Register = () => {
            
         </CardContent>
         <CardFooter>
-            <Button type="submit" className="w-full">Register</Button>
+            {
+                !loading
+                ?
+                <Button type="submit" className="w-full">Register</Button>
+                :
+                <Button className="w-full" disabled>
+                    <Loader2 className=" h-4 w-4 animate-spin" />
+                </Button>
+            }
         </CardFooter>
     </Card>
     </form>
