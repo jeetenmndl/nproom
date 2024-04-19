@@ -31,7 +31,7 @@ export async function POST(req) {
         const result = await Users.create(userData);
 
         return NextResponse.json({
-            data: result
+            data: result._id
         }, {
             status: 201
         })

@@ -1,0 +1,34 @@
+import React from 'react'
+
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs"
+import Register from '@/components/Register'
+
+
+const page = () => {
+  
+
+
+  return (
+    <main className='flex justify-center mt-16'>
+      <Tabs defaultValue="login" className="w-[400px]">
+      <TabsList className="grid w-full grid-cols-2">
+        <TabsTrigger value="login">Log in</TabsTrigger>
+        <TabsTrigger value="register">Register</TabsTrigger>
+      </TabsList>
+      <TabsContent value="login">
+
+      </TabsContent>
+      <TabsContent value="register">
+        <Register />
+      </TabsContent>
+    </Tabs>
+    </main>
+  )
+}
+
+export default page
