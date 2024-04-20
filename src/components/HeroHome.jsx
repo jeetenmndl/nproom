@@ -7,16 +7,16 @@ import {ChevronRight} from 'lucide-react'
 const HeroHome = () => {
   return (
     <section className='py-12'>
-        <article className='bg-light grid grid-cols-2'>
+        <article className='bg-light grid grid-cols-1 md:grid-cols-2'>
 
             <div>
                 <Image src={Knocking} alt='knocking' />
             </div>
 
-            <div className='px-12 py-16'>
-                <h3 className='text-3xl font-bold'>Knocking the door for finding your stay is old-fashion now !!!</h3>
+            <div className='px-4 py-4 md:px-12 md:py-16'>
+                <h3 className='text-xl md:text-3xl font-bold'>Knocking the door for finding your stay is old-fashion now !!!</h3>
 
-                <ul className="mt-8 ml-6 list-disc [&>li]:mt-4">
+                <ul className="mt-8 ml-4 md:ml-6 list-disc [&>li]:mt-4">
                     <li>No need to visit multiple places.</li>
                     <li>Relieved from knocking the doors.</li>
                     <li>We provide available stays in required location at one place.</li>

@@ -14,7 +14,7 @@ const Navbar = () => {
     <>
     {/* <!-- Top nav bar for secondary links --> */}
     <nav
-      className="w-full px-20 text-xs text-333 flex border-b border-gray-light justify-end"
+      className="w-full px-20 text-xs text-333 hidden md:flex border-b border-gray-light justify-end"
     >
       <div className="tier1 flex leading-10">
         <Link href="#" className="mx-8 text-center tracking-widest cursor-pointer hover:underline">ABOUT</Link>
@@ -31,18 +31,18 @@ const Navbar = () => {
 
 
     {/* <!-- Second Nav bar for logo and primary Links --> */}
-    <header className="w-full px-20 text-sm text-333 font-semibold shadow-sm flex items-center justify-between border-b border-gray-light">
+    <header className="w-full px-4 py-3 md:py-0.5 md:px-20 text-sm text-333 font-semibold shadow-sm flex items-center justify-between border-b border-gray-light">
       <div className="flex">
       {/* <!-- logo --> */}
         <div className="logo flex items-center gap-4 mr-9 cursor-pointer">
           <Link href="/">
-            <Image src={Logo} alt="nproom" className='w-12 h-12'/>
+            <Image src={Logo} alt="nproom" className=' w-8 h-8 md:w-12 md:h-12'/>
           </Link>
-          <Link href="/" className='text-3xl font-semibold text-gray-800'>NPROOM</Link>
+          <Link href="/" className=' text-2xl md:text-3xl font-semibold text-gray-800'>NPROOM</Link>
         </div>
 
         {/* <!-- links primary  --> */}
-        <div className="tier1 flex leading-[80px] [&>a]:uppercase">
+        <div className="tier1 hidden lg:flex leading-[80px] [&>a]:uppercase">
           <HoverCard>
             <HoverCardTrigger className="mx-8 tracking-widest cursor-pointer hover:underline">CATEGORY</HoverCardTrigger>
             <HoverCardContent className="leading-normal font-normal flex flex-col w-40 gap-2">

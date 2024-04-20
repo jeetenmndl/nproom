@@ -17,13 +17,13 @@ import { Button } from './ui/button';
 
 const Search = () => {
   return (
-    <section className='relative h-80'>
+    <section className='relative h-60 md:h-80'>
     <article className='grid place-items-center h-full'>
-        <div className='flex gap-1'>
+        <div className='flex flex-col md:flex-row gap-1 w-full md:w-auto px-16'>
             <Input type="text" placeholder="Enter City Name" />
 
             <Select>
-                <SelectTrigger className=" w-48">
+                <SelectTrigger className="w-full md:w-48">
                     <SelectValue placeholder="Type" />
                 </SelectTrigger>
                 <SelectContent>
@@ -38,7 +38,7 @@ const Search = () => {
             </Select>
 
             <Select>
-        <SelectTrigger className="w-48">
+        <SelectTrigger className="w-full md:w-48">
             <SelectValue placeholder="Rent" />
         </SelectTrigger>
         <SelectContent>
@@ -58,13 +58,13 @@ const Search = () => {
             </Select>
 
 
-            <Button className="bg-main hover:bg-black ">Search</Button>
+            <Button className="bg-main hover:bg-black w-full md:w-auto">Search</Button>
 
         </div>
     </article>
-    <div className=" w-full flex h-80 items-end overflow-hidden absolute top-0 -z-10 brightness-50">
-      <Image src={Banner2} alt="banner" className="w-1/2 h-auto"/>
-      <Image src={Banner2} alt="banner" className="w-1/2 h-auto"/>
+    <div className=" w-full flex h-full md:h-80 items-end overflow-hidden absolute top-0 -z-10 brightness-50">
+      <Image src={Banner2} alt="banner" className="w-full md:w-1/2 h-auto"/>
+      <Image src={Banner2} alt="banner" className="w-full md:w-1/2 h-auto hidden md:block"/>
 
     </div>
   </section>

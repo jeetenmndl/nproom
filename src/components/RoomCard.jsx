@@ -10,7 +10,7 @@ const RoomCard = () => {
     <Link href="/room">
     <div className='cursor-pointer border-b-2 border-transparent hover:border-main duration-500'>
 
-        <div className=" relative imageBox max-w-80 h-72 rounded-lg overflow-hidden">
+        <div className=" relative imageBox max-w-full md:max-w-80 h-72 rounded-lg overflow-hidden">
             <Image className='rounded-lg' layout='fill' objectFit='cover' src={Img1} alt='room in Biratnagar'/>
         </div>
 

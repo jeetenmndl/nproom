@@ -17,8 +17,8 @@ export default function Home() {
 
 
     {/* rooms card  */}
-    <section className="mx-20 my-16 ">
-      <article className="grid grid-cols-4 gap-x-6 gap-y-8">
+    <section className=" mx-6 md:mx-20 my-16 ">
+      <article className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-8">
       {
         data.map((item)=>{
           return(
@@ -28,7 +28,7 @@ export default function Home() {
       }
       </article>
       <div className="flex flex-col items-center my-12">
-        <p className="font-semibold text-lg mb-4">Continue exploring more rooms and flats</p>
+        <p className="font-semibold text-lg mb-4 text-center">Continue exploring more rooms and flats</p>
         <Button className="bg-main">Show More</Button>
       </div>
     </section>
