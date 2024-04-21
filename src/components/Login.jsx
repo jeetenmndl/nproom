@@ -49,7 +49,6 @@ const Login = () => {
     const isLogged = ()=>{
       
       let check = localStorage.getItem("auth-token");
-      console.log(check);
       if(check != null && check != ""){
         router.push("/")
       }

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
-import { Check, Images, MapPinned, Plug, TriangleAlert } from 'lucide-react'
+import { Car, Check, Images, MapPinned, Plug, TriangleAlert } from 'lucide-react'
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
@@ -17,7 +17,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from './ui/card'
 import { Switch } from './ui/switch'
 import { Textarea } from './ui/textarea'
 import { Checkbox } from './ui/checkbox'
@@ -25,6 +25,7 @@ import Image from 'next/image'
 import { UploadButton } from '@/lib/Uploadthing'
 import ResponseImage from './ResponseImage'
 import { useToast } from "@/components/ui/use-toast"
+import Link from 'next/link'
 
 
  
@@ -87,9 +88,25 @@ const formSchema = z.object({
 
 const PostRoomPage = () => {
 
+    
+    useEffect(() => {
+        isLogged();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
+  
+      const isLogged = ()=>{
+        
+        let check = localStorage.getItem("auth-token");
+        if(check == null && check == ""){
+          setMustLog(true);
+        }
+  
+      }
+
     const {toast} = useToast();
 
     const [step, setStep] = useState(1);
+    const [mustLog, setMustLog] = useState(false);
     const [responseImage, setResponseImage] = useState([]);
 
     const updateImages = (newImage)=>{
@@ -158,6 +175,7 @@ const PostRoomPage = () => {
 
   return (
     <>
+    <div className={!mustLog?'grid grid-cols-2 mx-20':'hidden'}>
     <section className=' relative '>
             <article className=' p-4 mt-8 sticky top-8 flex flex-col items-center'>
             <aside>                
@@ -826,6 +844,26 @@ const PostRoomPage = () => {
         </Form>
 
         
+    </section>
+
+    </div>
+    
+    <section className={mustLog?'flex w-full justify-center px-32 py-32':"hidden"}>
+        <Card>
+            <CardHeader>
+            <CardTitle>You must log in.</CardTitle>
+            </CardHeader>
+            <CardContent>
+            <CardDescription>Log in or register to post your room. So that you can keep track of your order and verify its you.</CardDescription>
+            </CardContent>
+            <CardFooter>
+                <Link href="/auth">
+                <Button className="w-32">
+                    Log in
+                </Button>
+                </Link>
+            </CardFooter>
+        </Card>
     </section>
     </>
   )
