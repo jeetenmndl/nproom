@@ -209,8 +209,10 @@ const PostRoomPage = () => {
 
   return (
     <>
-    <div className={!mustLog?'grid grid-cols-2 mx-20':'hidden'}>
-    <section className=' relative '>
+    <div className={!mustLog?'grid grid-cols-1 md:grid-cols-2 mx-4 md:mx-20':'hidden'}>
+
+    {/* steps  */}
+    <section className='relative hidden md:block'>
             <article className=' p-4 mt-8 sticky top-8 flex flex-col items-center'>
             <aside>                
                 <div className='flex gap-4 items-center mb-8 '>
@@ -284,7 +286,7 @@ const PostRoomPage = () => {
         {/* Step 1: location  */}
         <article className={step==1||step==5?"space-y-4 mb-12":"hidden"}> 
 
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             {/* city name */}
             <FormField
             control={form.control}
@@ -341,7 +343,7 @@ const PostRoomPage = () => {
             )}
             />
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* owner */}
             <FormField
             control={form.control}
@@ -380,7 +382,7 @@ const PostRoomPage = () => {
 
             </div>
 
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* rent */}
             <FormField
             control={form.control}
@@ -431,7 +433,7 @@ const PostRoomPage = () => {
 
              {/* buttons back and next     */}
              {step==5?"":
-                <div className='grid grid-cols-2 gap-6 pt-12'>
+                <div className='grid grid-cols-2 gap-2 md:gap-6 pt-12'>
                     <div  className="bg-gray-200 text-gray-400 px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-not-allowed" onClick={previousStep} >Back</div>
                     
                     <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer" onClick={nextStep} >Next</div>
@@ -441,7 +443,7 @@ const PostRoomPage = () => {
 
         {/* step 2: rooms and facility  */}
         <article className={step==2||step==5?"mb-12":"hidden"}>
-            <div className='grid grid-cols-2 gap-4 mb-6'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 mb-6'>
 
             {/* rooms  */}
             <Card>
@@ -736,7 +738,7 @@ const PostRoomPage = () => {
             
               {/* buttons back and next     */}
              {step==5?"":
-                <div className='grid grid-cols-2 gap-6 pt-12'>
+                <div className='grid grid-cols-2 gap-2 md:gap-6 pt-12'>
                     <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer " onClick={previousStep} >Back</div>
                     
                     <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer" onClick={nextStep} >Next</div>
@@ -770,7 +772,7 @@ const PostRoomPage = () => {
         
     
         
-        <div className=' grid grid-cols-3 gap-4'>               
+        <div className=' grid grid-cols-3 gap-2 md:gap-4'>               
                 {/* <ResponseImage responseImage={responseImage} /> */}
                 {
                 responseImage.map((imageURL)=>{
@@ -786,7 +788,7 @@ const PostRoomPage = () => {
 
               {/* buttons back and next     */}
              {step==5?"":
-                <div className='grid grid-cols-2 gap-6 pt-12'>
+                <div className='grid grid-cols-2 gap-2 md:gap-6 pt-12'>
                     <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer " onClick={previousStep} >Back</div>
                     
                     <div className="bg-main text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer" onClick={nextStep} >Next</div>
@@ -796,7 +798,7 @@ const PostRoomPage = () => {
 
         {/* step 4: rules  */}
         <article className={step==4||step==5?"mb-12":"hidden"}>
-            <div className='grid grid-cols-2 gap-4'>
+            <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
             <Card>
                 <CardHeader>
                     <CardTitle>Select Rules</CardTitle>
@@ -867,7 +869,7 @@ const PostRoomPage = () => {
             </div>
             
              {/* buttons back and next     */}
-            <div className='grid grid-cols-2 gap-6 pt-12'>
+            <div className='grid grid-cols-2 gap-2 md:gap-6 pt-12'>
                 <div  className="bg-gray-200 text-black hover:text-white hover:bg-primary  px-4 py-2.5 rounded-md text-sm grid place-items-center cursor-pointer " onClick={previousStep} >Back</div>
                 
                 <Button type="submit" className="bg-main" onClick={nextStep} >Submit</Button>
@@ -882,7 +884,7 @@ const PostRoomPage = () => {
 
     </div>
     
-    <section className={mustLog?'flex w-full justify-center px-32 py-32':"hidden"}>
+    <section className={mustLog?'flex w-full justify-center px-4 md:px-32 py-32':"hidden"}>
         <Card>
             <CardHeader>
             <CardTitle>You must log in.</CardTitle>
