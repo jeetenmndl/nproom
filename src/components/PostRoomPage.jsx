@@ -26,6 +26,8 @@ import { UploadButton } from '@/lib/Uploadthing'
 import ResponseImage from './ResponseImage'
 import { useToast } from "@/components/ui/use-toast"
 import Link from 'next/link'
+import postRoom from '@/lib/actions/postRoom'
+import { useRouter } from 'next/navigation'
 
 
  
@@ -88,6 +90,7 @@ const formSchema = z.object({
 
 const PostRoomPage = () => {
 
+    const router = useRouter();
     
     useEffect(() => {
         isLogged();
@@ -96,7 +99,7 @@ const PostRoomPage = () => {
   
       const isLogged = ()=>{
         
-        let check = localStorage.getItem("auth-token");
+        setCheck(localStorage.getItem("auth-token"));
         if(check == null && check == ""){
           setMustLog(true);
         }
@@ -107,6 +110,7 @@ const PostRoomPage = () => {
 
     const [step, setStep] = useState(1);
     const [mustLog, setMustLog] = useState(false);
+    const [check, setCheck] = useState("");
     const [responseImage, setResponseImage] = useState([]);
 
     const updateImages = (newImage)=>{
@@ -165,11 +169,41 @@ const PostRoomPage = () => {
 
      
       // 2. Define a submit handler.
-      function onSubmit(values) {
+     async function onSubmit(values) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
         console.log(values)
         console.log(responseImage)
+        console.log(check)
+        try {
+            // setLoading(true);
+            const response = await postRoom(values, responseImage, check);
+            if(response.posted==true){
+                toast({
+                    title: "Success !",
+                    description: "Room posted successfully.",
+                })
+                setTimeout(() => {
+                    router.push("/");
+                }, 3000);
+            }
+            else{
+              toast({
+                title: "Oops !",
+                description: "Some error occured.",
+                variant: "destructive",
+            })
+            }
+        } catch (error) {
+            console.log(error)
+            toast({
+                title: "Oops !",
+                description: "Some error occured.",
+                variant: "destructive",
+            })
+        }finally{
+            // setLoading(false);
+        }
       }
 
 
