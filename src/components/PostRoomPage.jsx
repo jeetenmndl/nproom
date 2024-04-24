@@ -1,3 +1,4 @@
+'use client'
 import React, { useEffect, useState } from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -88,9 +89,17 @@ const formSchema = z.object({
 })
 
 
-const PostRoomPage = () => {
+const PostRoomPage = ({auth}) => {
 
     const router = useRouter();
+    
+    const {toast} = useToast();
+
+    const [step, setStep] = useState(1);
+    const [mustLog, setMustLog] = useState(false);
+    // const [check, setCheck] = useState("");
+    const [responseImage, setResponseImage] = useState([]);
+    
     
     useEffect(() => {
         isLogged();
@@ -98,20 +107,15 @@ const PostRoomPage = () => {
       }, [])
   
       const isLogged = ()=>{
-        
-        setCheck(localStorage.getItem("auth-token"));
-        if(check == null && check == ""){
+        // setCheck(localStorage.getItem("auth-token"));
+        let check = localStorage.getItem("auth-token")
+        if(check == null || check == ""){
           setMustLog(true);
+          router.push("/auth");
         }
   
       }
 
-    const {toast} = useToast();
-
-    const [step, setStep] = useState(1);
-    const [mustLog, setMustLog] = useState(false);
-    const [check, setCheck] = useState("");
-    const [responseImage, setResponseImage] = useState([]);
 
     const updateImages = (newImage)=>{
         console.log("responseImage:", responseImage)
@@ -209,7 +213,7 @@ const PostRoomPage = () => {
 
   return (
     <>
-    <div className={!mustLog?'grid grid-cols-1 md:grid-cols-2 mx-4 md:mx-20':'hidden'}>
+    <div className={mustLog?'hidden':'grid grid-cols-1 md:grid-cols-2 mx-4 md:mx-20'}>
 
     {/* steps  */}
     <section className='relative hidden md:block'>
@@ -884,7 +888,7 @@ const PostRoomPage = () => {
 
     </div>
     
-    <section className={mustLog?'flex w-full justify-center px-4 md:px-32 py-32':"hidden"}>
+    <section className={mustLog?'flex w-full justify-center px-4 md:px-32 py-32':'hidden'}>
         <Card>
             <CardHeader>
             <CardTitle>You must log in.</CardTitle>

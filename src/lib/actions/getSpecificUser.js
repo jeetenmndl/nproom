@@ -25,7 +25,11 @@ const getSpecificUserOTP = async (phone)=>{
         const date = new Date()
         let code = date.getDay()*num2
         code = code % 100000;
-        console.log(code);
+        if(code<9999){
+            console.log("0"+code.toString());
+        }else{
+            console.log(code.toString());
+        }
         return { found: true, userID: response.data._id }
     }
   
