@@ -176,12 +176,13 @@ const PostRoomPage = ({auth}) => {
      async function onSubmit(values) {
         // Do something with the form values.
         // ✅ This will be type-safe and validated.
+        let user = localStorage.getItem("auth-token")
         console.log(values)
         console.log(responseImage)
-        console.log(check)
+        console.log(user)
         try {
             // setLoading(true);
-            const response = await postRoom(values, responseImage, check);
+            const response = await postRoom(values, responseImage, user);
             if(response.posted==true){
                 toast({
                     title: "Success !",
