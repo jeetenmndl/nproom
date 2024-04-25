@@ -7,6 +7,8 @@ import {
     HoverCardContent,
     HoverCardTrigger,
   } from "@/components/ui/hover-card"
+import LoginLogout from './LoginLogout'
+import SideBar from './SideBar'
   
 
 const Navbar = () => {
@@ -24,7 +26,7 @@ const Navbar = () => {
       </div>
       <div className="tier2 leading-10">
         <div className="ml-8 tracking-widest">
-          <Link href="#" className="font-bold cursor-pointer hover:underline">ADMIN</Link>
+          <LoginLogout />
         </div>
       </div>
     </nav>
@@ -57,6 +59,10 @@ const Navbar = () => {
           <Link href="/post-room" className="mx-8 tracking-widest cursor-pointer hover:underline">Post room</Link>
           <Link href="/" className="mx-8 tracking-widest cursor-pointer hover:underline">Guide</Link>
         </div>
+      </div>
+
+      <div className='flex items-center lg:hidden'>
+        <SideBar />
       </div>
 
     </header>

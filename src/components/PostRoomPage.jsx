@@ -111,6 +111,10 @@ const PostRoomPage = ({auth}) => {
         let check = localStorage.getItem("auth-token")
         if(check == null || check == ""){
           setMustLog(true);
+          toast({
+            title: "Alert !",
+            description: "You must log in to post the room .",
+        })
           router.push("/auth");
         }
   
