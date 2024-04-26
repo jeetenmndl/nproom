@@ -9,6 +9,7 @@ import {
   } from "@/components/ui/hover-card"
 import LoginLogout from './LoginLogout'
 import SideBar from './SideBar'
+import { CircleUser } from 'lucide-react'
   
 
 const Navbar = () => {
@@ -33,14 +34,14 @@ const Navbar = () => {
 
 
     {/* <!-- Second Nav bar for logo and primary Links --> */}
-    <header className="w-full px-4 py-3 md:py-0.5 md:px-20 text-sm text-333 font-semibold shadow-sm flex items-center justify-between border-b border-gray-light">
+    <header className="w-full px-4 py-2 md:py-0.5 md:px-20 text-sm text-333 font-semibold shadow-sm flex items-center justify-between border-b border-gray-light">
       <div className="flex">
       {/* <!-- logo --> */}
-        <div className="logo flex items-center gap-4 mr-9 cursor-pointer">
+        <div className="logo flex items-center gap-2 md:gap-4 mr-9 cursor-pointer">
           <Link href="/">
-            <Image src={Logo} alt="nproom" className=' w-8 h-8 md:w-12 md:h-12'/>
+            <Image src={Logo} alt="nproom" className=' w-7 h-7 md:w-12 md:h-12'/>
           </Link>
-          <Link href="/" className=' text-2xl md:text-3xl font-semibold text-gray-800'>NPROOM</Link>
+          <Link href="/" className=' text-xl md:text-3xl font-semibold text-gray-800'>NPROOM</Link>
         </div>
 
         {/* <!-- links primary  --> */}
@@ -61,7 +62,8 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className='flex items-center lg:hidden'>
+      <div className='flex gap-5 items-center lg:hidden'>
+        <CircleUser  />
         <SideBar />
       </div>
 
