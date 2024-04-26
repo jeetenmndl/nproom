@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConn";
-import Users from "@/models/userModel";
+import Rooms from "@/models/roomsModel";
 import {NextResponse} from "next/server";
 
 
@@ -9,22 +9,28 @@ export async function GET(req, {params}) {
 
         await dbConnect();
 
-        if(params.id.length == 10){
+        let info = params.id.slice(0,24)
+        let type = params.id.slice(24)
+        // console.log(info, type)
+        
+        // to get one room/ product page
+        if(type == "room"){
 
-            const user = await Users.findOne({"phone": params.id});
+            const room = await Rooms.findOne({"_id": info});
 
             return NextResponse.json({
-                data: user
+                data: room
             }, {
                 status: 200
             })
         }
         else{
+            // to get all room associated with user / profile
 
-            const user = await Users.findOne({"_id": params.id});
+            const rooms = await Rooms.find({"belongsTo": info});
 
             return NextResponse.json({
-                data: user
+                data: rooms
             }, {
                 status: 200
             })

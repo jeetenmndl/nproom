@@ -62,8 +62,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className='flex gap-5 items-center lg:hidden'>
-        <CircleUser  />
+      <div className='flex gap-4 items-center lg:hidden'>
+        <Link href="/profile">
+          <CircleUser strokeWidth={1.75}  />
+        </Link>
         <SideBar />
       </div>
 
