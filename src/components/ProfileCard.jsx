@@ -3,11 +3,27 @@
 import React, { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card'
 import getUserProfile from '@/lib/actions/getUserProfile'
+import { useRouter } from 'next/navigation'
+import { useToast } from './ui/use-toast'
 
 const ProfileCard = () => {
+
+    const {toast} = useToast();
+    const router = useRouter()
+
     useEffect( () => {
         const token = localStorage.getItem("auth-token");
+        if(token=="" || token==null){
+            toast({
+                title: "Oops !",
+                description: "Log in to view Profile.",
+            });
+            console.log(token)
+            router.push("/auth");
+        }
         getUser(token);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
     
     const getUser = async (token) => {

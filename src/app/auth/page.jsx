@@ -15,7 +15,7 @@ const page = () => {
 
 
   return (
-    <main className='flex justify-center mt-16 h-dvh'>
+    <main className='flex justify-center my-16'>
       <Tabs defaultValue="login" className="w-[400px]">
       <TabsList className="grid w-full grid-cols-2">
         <TabsTrigger value="login">Log in</TabsTrigger>

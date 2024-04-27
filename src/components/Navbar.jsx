@@ -62,7 +62,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      <div className='flex gap-4 items-center lg:hidden'>
+      <div className='flex gap-4 items-center'>
         <Link href="/profile">
           <CircleUser strokeWidth={1.75}  />
         </Link>

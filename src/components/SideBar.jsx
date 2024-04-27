@@ -15,8 +15,8 @@ import LoginLogout from './LoginLogout'
 
 const SideBar = () => {
   return (
-    <Sheet>
-    <SheetTrigger className='bg-light p-1 rounded hover:bg-gray-300 '>
+    <Sheet >
+    <SheetTrigger className='bg-light p-1 rounded hover:bg-gray-300 lg:hidden'>
         <Menu />
     </SheetTrigger>
     <SheetContent>
