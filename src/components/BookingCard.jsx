@@ -10,41 +10,54 @@ import BookingDialog from './BookingDialog'
 // import BookingDrawer from './BookingDrawer'
 
 
-const BookingCard = () => {
+const BookingCard = (props) => {
+  const room = props.room;
   return (
     <div className='rounded-lg sticky top-8 flex justify-end'>
       <Card className="w-full relative">
 
         <CardHeader>
-          <CardTitle>Peepal Chowk, Biratnagar</CardTitle>
-          <CardDescription>Near Arniko Campus</CardDescription>
+          <CardTitle>{room.area}, {room.city}</CardTitle>
+          <CardDescription>{room.neighbourhood}</CardDescription>
         </CardHeader>
 
         <CardContent>
           
           <div className='flex flex-col py-4'>
-          <p className='text-md text-xl  font-semibold'>Rs 15000 <span className='font-normal'>/month</span></p>
-          <span className='font-light text-gray-500'>Negotiable</span>
+          <p className='text-md text-xl  font-semibold'>Rs {room.rent} <span className='font-normal'>/month</span></p>
+          <span className='font-light text-gray-500'>{room.rentType}</span>
           </div>
 
           <table className='mt-4 w-full'>
             <tbody>
-            <tr><td>Stay Type</td><td className=' text-right'>Flat</td></tr>
-            <tr><td>Bedroom</td><td className=' text-right'>2</td></tr>
-            <tr><td>Hall</td><td className=' text-right'>1</td></tr>
-            <tr><td>Kitchen</td><td className=' text-right'>1</td></tr>
-            <tr><td>Toilet/Bathroom</td><td className=' text-right'>Personal</td></tr>
+            <tr><td>Stay Type</td><td className=' text-right'>{room.rooms.stayType}</td></tr>
+            <tr><td>Bedroom</td><td className=' text-right'>{room.rooms.bedroom}</td></tr>
+            <tr><td>Hall</td><td className=' text-right'>{room.rooms.hall}</td></tr>
+            <tr><td>Kitchen</td><td className=' text-right'>{room.rooms.kitchen}</td></tr>
+            <tr><td>Toilet/Bathroom</td><td className=' text-right'>{room.rooms.bathroom}</td></tr>
             </tbody>
           </table>
 
           <div className='flex gap-4 my-4'>
             <div className='flex justify-between items-center w-1/2 py-1.5 px-4 rounded bg-gray-200'>
               <p>Electricity</p>
-              <Check size={20} strokeWidth={3} className='text-green-500' />
+              {
+                room.facilities.electricity
+                ?
+                <Check size={20} strokeWidth={3} className='text-green-500' />
+                :
+                <X size={20} strokeWidth={3} className='text-red-500' />
+              }
             </div>
             <div className='flex justify-between items-center w-1/2 py-1.5 px-4 rounded bg-gray-200'>
               <p>Water Supply</p>
-              <X size={20} strokeWidth={3} className='text-red-500' />
+              {
+                room.facilities.water
+                ?
+                <Check size={20} strokeWidth={3} className='text-green-500' />
+                :
+                <X size={20} strokeWidth={3} className='text-red-500' />
+              }
             </div>
           </div>
 
@@ -56,8 +69,6 @@ const BookingCard = () => {
 
             {/* opens the dialog for booking and user info  */}
             <BookingDialog />
-
-            <p className='text-xs mt-2 text-gray-500'>Small one-time commission amount will be charged</p>
           </div>
         </CardFooter>
 

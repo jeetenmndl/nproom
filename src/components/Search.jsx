@@ -19,7 +19,7 @@ const Search = () => {
   return (
     <section className='relative h-60 md:h-80'>
     <article className='grid place-items-center h-full'>
-        <div className='flex flex-col md:flex-row gap-1 w-full md:w-auto px-16'>
+        <div className='flex flex-col md:flex-row gap-1 w-full md:w-auto px-6 lg:px-16'>
             <Input type="text" placeholder="Enter City Name" />
 
             <Select>

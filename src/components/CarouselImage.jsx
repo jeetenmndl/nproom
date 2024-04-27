@@ -10,16 +10,17 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 
-export default function CarouselImage() {
+export default function CarouselImage(props) {
+  const photos = props.photos;
   return (
     <Carousel className="w-full bg-light">
       <CarouselContent>
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index}>
+        {photos.map((photo, index) => (
+          <CarouselItem key={index*12.1}>
             <div className="md:p-1">
               <Card>
                 <CardContent className="flex w-full aspect-video items-center justify-center p-0 bg-light">
-                  <Image src={Img1} alt="room" />
+                  <Image src={photo} width={500} height={900} className="w-auto h-full" alt="room" />
                 </CardContent>
               </Card>
             </div>

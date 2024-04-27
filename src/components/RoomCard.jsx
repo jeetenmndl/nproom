@@ -7,7 +7,7 @@ import {ChevronRight} from 'lucide-react'
 
 const RoomCard = () => {
   return (
-    <Link href="/room">
+    <Link href="/room/662cb7910e3bdfac2e8a490c">
     <div className='cursor-pointer border-b-2 border-transparent hover:border-main duration-500'>
 
         <div className=" relative imageBox max-w-full md:max-w-80 h-72 rounded-lg overflow-hidden">

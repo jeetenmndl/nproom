@@ -10,7 +10,7 @@ import BannerBlue from "@/../public/bannerBlue.png"
 
 const Footer = () => {
   return (
-    <footer className='bg-light'>
+    <footer className='bg-light z-0'>
 
         <hr className="border-gray-200 sm:mx-auto " />
 
@@ -23,7 +23,7 @@ const Footer = () => {
         <hr className="border-gray-200 sm:mx-auto " />
 
         {/* middle links  */}
-        <div className='px-4 md:px-20 py-4 md:py-8 flex flex-col md:flex-row justify-between gap-4'>
+        <div className='px-4 md:px-20 py-4 md:py-8 flex flex-col md:flex-row justify-between gap-4 z-0'>
             {/* <div className="mapBox w-2/5">
                 <Image src={Map} alt="nproom location" />
             </div> */}
