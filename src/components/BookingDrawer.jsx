@@ -1,3 +1,5 @@
+'use client'
+
 import React from 'react'
 import {
     Drawer,
@@ -13,9 +15,52 @@ import { Button } from './ui/button'
 import { Input } from './ui/input'
 import { Label } from './ui/label'
 import { Textarea } from './ui/textarea'
+import { useToast } from './ui/use-toast'
+import { useRouter } from 'next/navigation'
+import bookRoom from '@/lib/actions/bookRoom'
   
 
-const BookingDrawer = () => {
+const BookingDrawer = (props) => {
+
+  const {toast} = useToast();
+  const router = useRouter();
+  const room = props.room;
+
+  const onSubmit = async ()=>{
+    let user = localStorage.getItem("auth-token");
+    // console.log(user) 
+    if(user==null || user==""){
+      toast({
+        title:"Oops !!!",
+        description: "You need to log in first."
+      })
+      setTimeout(() => {
+        router.push("/auth");
+      }, 2000);
+
+
+    }
+    else{
+      // call server action function and send room(object) and auth-token(to get phone number and send sms)
+      // console.log(room,user)
+      const result = await bookRoom(room,user);
+      if(result.success==true){
+        toast({
+          title: "Congratulations !",
+          description: "Booking done. Check your sms for further information"
+        })
+      }
+      else{
+        toast({
+          title: "Oops !!!",
+          description: "Some error occoured. Try again later.",
+          variant: "destructive"
+        })
+      }
+    }
+    
+  }
+
   return (
     <Drawer classname="w-full" >
 
@@ -23,63 +68,16 @@ const BookingDrawer = () => {
 
         <DrawerContent className="px-4">
       <DrawerHeader>
-        <DrawerTitle>Contact Information</DrawerTitle>
+        <DrawerTitle>Confirm your booking?</DrawerTitle>
         <DrawerDescription>
-          Enter your details and contact infromation.
+          Press the button below to confirm your booking. We will send the contact details of the room owner to your phone number.
         </DrawerDescription>
       </DrawerHeader>
-      <div>
         
-        <div className="my-2">
-            <Label htmlFor="name">
-              Full Name
-            </Label>
-            <Input
-              id="name"
-              placeholder="Hari Prasad"
-              className="mt-0.5 h-8 ring-stone-800 "
-            />
-        </div>
-        
-        <div className="my-2">
-            <Label htmlFor="phone">
-              Contact Number
-            </Label>
-            <Input
-              id="phone"
-              placeholder="98XXXXXXXX"
-              className="mt-0.5 h-8 ring-stone-800 "
-            />
-        </div>
-        
-        <div className="my-2">
-            <Label htmlFor="message">
-              Message
-            </Label>
-            <Textarea
-              id="message"
-              placeholder="Your concerns, or message to the house owner..."
-              className="mt-0.5 ring-stone-800 placeholder:text-gray-400 placeholder:font-light"
-            />
-        </div>
-        
-        <div className="my-2">
-            <Label htmlFor="name">
-              Documnet Photo 
-            </Label>
-            <Input
-              type='file'
-              id="document"
-              placeholder="Hari Prasad"
-              className="mt-0.5 ring-stone-800"
-            />
-            <span className='text-xs text-gray-500'>(Citizenship, Student ID, Driving liscense, Voting card, etc)</span>
-        </div>
-        
-        <DrawerFooter className="mt-4 px-0">
-            <Button className="w-full bg-main">Submit</Button>
-        </DrawerFooter>
-      </div>
+      <DrawerFooter className="mt-4">
+          <Button className="w-full bg-main" onClick={onSubmit}>Submit</Button>
+      </DrawerFooter>
+      
     </DrawerContent>
     </Drawer>
   )

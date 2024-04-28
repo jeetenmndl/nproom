@@ -222,7 +222,7 @@ const page = async ({params}) => {
           <span className='font-light text-gray-500 leading-3'>{room.rentType}</span>
       </div>
       <div>
-        <BookingDrawer />
+        <BookingDrawer room={room} />
       </div>
     </section>
 

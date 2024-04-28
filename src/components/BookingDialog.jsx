@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect } from 'react'
 import {
     Dialog,
     DialogContent,
@@ -14,71 +16,68 @@ import { Textarea } from './ui/textarea'
 import { Input } from "./ui/input"
 import { Label } from "./ui/label"
 import { Button } from './ui/button'
+import { useToast } from './ui/use-toast'
+import { useRouter } from 'next/navigation'
+import bookRoom from '@/lib/actions/bookRoom'
   
 
-const BookingDialog = () => {
+const BookingDialog = (props) => {
+
+  const {toast} = useToast();
+  const router = useRouter();
+  const room = props.room;
+
+  const onSubmit = async ()=>{
+    let user = localStorage.getItem("auth-token");
+    // console.log(user) 
+    if(user==null || user==""){
+      toast({
+        title:"Oops !!!",
+        description: "You need to log in first."
+      })
+      setTimeout(() => {
+        router.push("/auth");
+      }, 2000);
+
+
+    }
+    else{
+      // call server action function and send room(object) and auth-token(to get phone number and send sms)
+      // console.log(room,user);
+      const result = await bookRoom(room,user);
+      if(result.success==true){
+        toast({
+          title: "Congratulations !",
+          description: "Check your sms for further information"
+        })
+      }
+      else{
+        toast({
+          title: "Oops !!!",
+          description: "Some error occoured. Try again later.",
+          variant: "destructive"
+        })
+      }
+    }
+    
+  }
+  
+
   return (
     <Dialog>
     <DialogTrigger className='w-full bg-main py-2.5 px-4 rounded-md text-white text-sm font-medium'>Book Now</DialogTrigger>
     <DialogContent>
       <DialogHeader>
-        <DialogTitle>Contact Information</DialogTitle>
+        <DialogTitle>Confirm your booking?</DialogTitle>
         <DialogDescription>
-          Enter your details and contact infromation.
+          Press the button below to confirm your booking. We will send the contact details of the room owner to your phone number.
         </DialogDescription>
       </DialogHeader>
-      <div>
         
-        <div className="my-2">
-            <Label htmlFor="name">
-              Full Name
-            </Label>
-            <Input
-              id="name"
-              placeholder="Hari Prasad"
-              className="mt-0.5 h-8 ring-stone-800 "
-            />
-        </div>
-        
-        <div className="my-2">
-            <Label htmlFor="phone">
-              Contact Number
-            </Label>
-            <Input
-              id="phone"
-              placeholder="98XXXXXXXX"
-              className="mt-0.5 h-8 ring-stone-800 "
-            />
-        </div>
-        
-        <div className="my-2">
-            <Label htmlFor="message">
-              Message
-            </Label>
-            <Textarea
-              id="message"
-              placeholder="Your concerns, or message to the house owner..."
-              className="mt-0.5 ring-stone-800 placeholder:text-gray-400 placeholder:font-light"
-            />
-        </div>
-        
-        <div className="my-2">
-            <Label htmlFor="name">
-              Documnet Photo 
-            </Label>
-            <Input
-              type='file'
-              id="document"
-              placeholder="Hari Prasad"
-              className="mt-0.5 ring-stone-800"
-            />
-            <span className='text-xs text-gray-500'>(Citizenship, Student ID, Driving liscense, Voting card, etc)</span>
-        </div>
-        
-        <DialogFooter className="mt-4">
-            <Button className="w-full bg-main">Submit</Button>
-        </DialogFooter>
-      </div>
+      <DialogFooter className="mt-4">
+          <Button className="w-full bg-main" onClick={onSubmit}>Submit</Button>
+      </DialogFooter>
+      
     </DialogContent>
   </Dialog>
   

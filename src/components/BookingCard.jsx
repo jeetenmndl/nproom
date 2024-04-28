@@ -68,7 +68,7 @@ const BookingCard = (props) => {
             {/* <Button className="w-full bg-main">Book Now</Button> */}
 
             {/* opens the dialog for booking and user info  */}
-            <BookingDialog />
+            <BookingDialog room={room} />
           </div>
         </CardFooter>
 
