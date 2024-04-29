@@ -35,7 +35,7 @@ const ProfileCard = () => {
     
   return (
     
-    <section className='w-1/4 mt-14'>
+    <section className='md:w-1/4 md:mt-14'>
         {
             user &&
         <Card className="bg-slate-800 text-white sticky top-12">

@@ -30,9 +30,9 @@ const Footer = () => {
             <div className='relative md:w-1/2'>
             <div className="logo flex items-center justify-center gap-4 md:mt-8 cursor-pointer">
             <Link href="/">
-                <Image src={Logo} alt="nproom" className='w-12 h-12'/>
+                <Image src={Logo} alt="nproom" className='w-8 lg:w-12 h-8 lg:h-12'/>
             </Link>
-            <Link href="/" className='text-5xl font-semibold'>NPROOM</Link>
+            <Link href="/" className=' text-2xl lg:text-5xl font-semibold'>NPROOM</Link>
             </div>
             <Image src={BannerBlue} alt='banner' className='md:absolute mt-4 md:mt-0 w-full bottom-0' />
             </div>

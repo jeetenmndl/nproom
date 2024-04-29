@@ -13,7 +13,7 @@ import getSpecificRoom from '@/lib/actions/getSpecificRoom'
 
 const page = async ({params}) => {
 
-  console.log(params.id);
+  // console.log(params.id);
   let id = params.id + "room"
   const result = await getSpecificRoom(id)
   const room = result.data;
@@ -216,7 +216,7 @@ const page = async ({params}) => {
       </article>
     </section>
 
-    <section className='flex w-full z-30 gap-4 px-4 pt-3 pb-4 items-center justify-between border-y-2 fixed -bottom-1 bg-white lg:hidden'>
+    <section className='flex w-full z-30 gap-4 px-5 pt-4 pb-5 items-center justify-between border-y-2 fixed -bottom-1 bg-white lg:hidden' style={{boxShadow: "0px -1px 3px 2px #b1b1b150"}}>
       <div className='flex flex-col'>
           <p className='text-lg leading-6 font-semibold'>Rs {room.rent} <span className='font-normal text-base '>/month</span></p>
           <span className='font-light text-gray-500 leading-3'>{room.rentType}</span>

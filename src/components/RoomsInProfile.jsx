@@ -60,11 +60,11 @@ const deleteRoom = async (id, type)=>{
 }
 
   return (
-    <section className='w-3/4 mt-2'>
+    <section className='w-full md:w-3/4 mt-2'>
         <h2 className='text-3xl font-semibold mb-4'>Your Rooms</h2>
         {
           rooms &&
-          <article className='grid grid-cols-2 gap-4'>
+          <article className='grid grid-cols-1 md:grid-cols-2 gap-4'>
           {
           rooms.map((room)=>{
               return(

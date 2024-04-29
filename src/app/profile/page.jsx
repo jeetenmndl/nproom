@@ -6,7 +6,7 @@ import React from 'react'
 
 const page = () => {
   return (
-   <main className='flex flex-col-reverse md:flex-row gap-8 mx-20 my-4 min-h-96 '>
+   <main className='flex flex-col-reverse lg:flex-row gap-8 mx-4 lg:mx-20 my-4 min-h-96 '>
         <RoomsInProfile />
         {/* <Separator orientation="vertical" /> */}
         <ProfileCard />
