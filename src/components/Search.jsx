@@ -28,17 +28,24 @@ import Link from 'next/link';
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
+import { Card } from './ui/card';
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer"
 
 const formSchema = z.object({
     city: z.string().min(2, {
         message : "Required",
       }),
-    type: z.string().min(2, {
-        message : "Required.",
-      }),
-    rent: z.string().min(2, {
-        message : "Required.",
-      })
+    type: z.string().optional(),
+    rent: z.string().optional()
     
   })
 
@@ -128,7 +135,7 @@ const Search = () => {
                     <SelectItem value="flat">Flat</SelectItem>
                     <SelectItem value="house">House</SelectItem>
                     <SelectItem value="office">Office</SelectItem>
-                    </SelectGroup>
+                </SelectGroup>
                 </SelectContent>
               </Select>
               <FormMessage />
@@ -143,7 +150,7 @@ const Search = () => {
             <FormItem>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger className="w-full md:w-32" >
+                  <SelectTrigger className="w-full md:w-32 hidden lg:flex" >
                     <SelectValue placeholder="Rent" />
                   </SelectTrigger>
                 </FormControl>

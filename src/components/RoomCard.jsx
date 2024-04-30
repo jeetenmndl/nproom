@@ -16,7 +16,7 @@ const RoomCard = () => {
 
         <div className="descBox text-sm my-4">
           
-            <h3 className='font-semibold text-gray-800 text-base overflow-hidden whitespace-nowrap text-ellipsis '>Peepal Chowk, Biratnagar</h3>
+            <h3 className='font-semibold text-gray-800 text-base overflow-hidden whitespace-nowrap text-ellipsis capitalize'>peepal Chowk, Biratnagar</h3>
             <p className='text-gray-500 overflow-hidden whitespace-nowrap text-ellipsis'>Near Arniko Campus</p>
             <p className='text-gray-500'>Flat, Available</p>
 
